@@ -14,6 +14,8 @@ TypeScript/JavaScript SDK for the SingleKey Screening API. Process comprehensive
 
 ## Quick Start
 
+**Official Documentation:** [Getting Started Guide](https://github.com/singlekeyinc/Screening-Api/tree/main/getting-started/quickstart.md) | [Authentication](https://github.com/singlekeyinc/Screening-Api/tree/main/getting-started/authentication.md) | [Environments](https://github.com/singlekeyinc/Screening-Api/tree/main/getting-started/environments.md)
+
 ### Initialize the SDK
 
 ```typescript
@@ -93,6 +95,8 @@ const client = createClient(config: SingleKeyConfig)
 
 ### Request Service
 
+**Official Documentation:** [Request API Reference](https://github.com/singlekeyinc/Screening-Api/tree/main/api-reference/request.md) | [Request Route](https://github.com/singlekeyinc/Screening-Api/tree/main/routes/request-route.md) | [Direct API Integration](https://github.com/singlekeyinc/Screening-Api/tree/main/integration-guides/direct-api-integration.md) | [Form-Based Integration](https://github.com/singlekeyinc/Screening-Api/tree/main/integration-guides/form-based-integration.md)
+
 Create and manage screening requests.
 
 #### `client.request.create(data)`
@@ -131,6 +135,8 @@ const response = await client.request.create({
 
 #### `client.request.createLandlordForm(data)`
 
+**Official Documentation:** [Landlord Form Request](https://github.com/singlekeyinc/Screening-Api/tree/main/example-payloads/landlord-form-request.md)
+
 Create a landlord form-based request.
 
 **Parameters:**
@@ -167,6 +173,8 @@ const response = await client.request.createLandlordForm({
 
 #### `client.request.createTenantForm(data)`
 
+**Official Documentation:** [Tenant Form Request](https://github.com/singlekeyinc/Screening-Api/tree/main/example-payloads/tenant-form-request.md)
+
 Create a tenant form-based request.
 
 **Parameters:**
@@ -195,6 +203,8 @@ const response = await client.request.createTenantForm({
 ```
 
 #### `client.request.createDirect(data)`
+
+**Official Documentation:** [Direct API Request](https://github.com/singlekeyinc/Screening-Api/tree/main/example-payloads/direct-api-request.md) | [Direct API Integration Guide](https://github.com/singlekeyinc/Screening-Api/tree/main/integration-guides/direct-api-integration.md)
 
 Create a direct API request with immediate processing.
 
@@ -239,6 +249,8 @@ const response = await client.request.createDirect({
 ---
 
 ### Report Service
+
+**Official Documentation:** [Report API Reference](https://github.com/singlekeyinc/Screening-Api/tree/main/api-reference/report.md) | [Report PDF API](https://github.com/singlekeyinc/Screening-Api/tree/main/api-reference/report-pdf.md) | [Fetch Report Route](https://github.com/singlekeyinc/Screening-Api/tree/main/routes/fetch-report-route.md) | [Response Examples](https://github.com/singlekeyinc/Screening-Api/tree/main/responses/response-examples.md)
 
 Retrieve screening reports and PDFs.
 
@@ -381,6 +393,8 @@ console.log("Current status:", status);
 
 ### Applicant Service
 
+**Official Documentation:** [Applicant API Reference](https://github.com/singlekeyinc/Screening-Api/tree/main/api-reference/applicant.md) | [Applicant Data Route](https://github.com/singlekeyinc/Screening-Api/tree/main/routes/applicant-data-route.md)
+
 Retrieve detailed applicant (tenant) information.
 
 #### `client.applicant.get(purchaseToken, params)`
@@ -484,6 +498,8 @@ console.log("Complete info:", complete);
 ---
 
 ### Payment Service
+
+**Official Documentation:** [Payments API Reference](https://github.com/singlekeyinc/Screening-Api/tree/main/api-reference/payments.md)
 
 Manage payment methods and validate purchases.
 
@@ -594,6 +610,8 @@ if (!hasCard) {
 ---
 
 ### Webhook Utilities
+
+**Official Documentation:** [Webhook Events](https://github.com/singlekeyinc/Screening-Api/tree/main/webhooks/events.md) | [Webhook Payload Reference](https://github.com/singlekeyinc/Screening-Api/tree/main/webhooks/payload-reference.md) | [Webhook Integration Guide](https://github.com/singlekeyinc/Screening-Api/tree/main/integration-guides/webhook-integration.md)
 
 #### WebhookHandler Class
 
@@ -707,7 +725,7 @@ Express middleware for handling webhooks.
 **Example:**
 
 ```typescript
-import { webhookMiddleware } from "@singlekey/sdk";
+import { webhookMiddleware } from "./src";
 
 app.post(
   "/webhooks/singlekey",
@@ -746,6 +764,8 @@ const { signature, timestamp } = constructWebhookSignature(
 
 ### Validation Utilities
 
+**Official Documentation:** [Data Field Validation](https://github.com/singlekeyinc/Screening-Api/tree/main/fields/data-field-validation.md) | [Validation Rules](https://github.com/singlekeyinc/Screening-Api/tree/main/fields/validation-rules.md) | [Required Fields](https://github.com/singlekeyinc/Screening-Api/tree/main/fields/required-fields.md) | [Optional Fields](https://github.com/singlekeyinc/Screening-Api/tree/main/fields/optional-fields.md) | [Available Fields](https://github.com/singlekeyinc/Screening-Api/tree/main/fields/available-fields.md)
+
 #### Email Validation
 
 ##### `isValidEmail(email)`
@@ -761,7 +781,7 @@ Validate email format.
 **Example:**
 
 ```typescript
-import { isValidEmail } from "@singlekey/sdk";
+import { isValidEmail } from "./src";
 
 if (!isValidEmail("user@example.com")) {
   console.error("Invalid email");
@@ -783,7 +803,7 @@ Validate phone number (10 or 11 digits).
 **Example:**
 
 ```typescript
-import { isValidPhone } from "@singlekey/sdk";
+import { isValidPhone } from "./src";
 
 if (isValidPhone("5551234567")) {
   console.log("Valid phone number");
@@ -803,7 +823,7 @@ Normalize phone number to 10 digits.
 **Example:**
 
 ```typescript
-import { normalizePhone } from "@singlekey/sdk";
+import { normalizePhone } from "./src";
 
 const normalized = normalizePhone("(555) 123-4567");
 // Returns: '5551234567'
@@ -826,7 +846,7 @@ Validate date of birth and check age requirement (must be 18+).
 **Example:**
 
 ```typescript
-import { isValidDateOfBirth } from "@singlekey/sdk";
+import { isValidDateOfBirth } from "./src";
 
 const validation = isValidDateOfBirth(1990, 6, 15);
 if (!validation.valid) {
@@ -849,7 +869,7 @@ Calculate age from date of birth.
 **Example:**
 
 ```typescript
-import { calculateAge } from "@singlekey/sdk";
+import { calculateAge } from "./src";
 
 const age = calculateAge(1990, 6, 15);
 console.log("Age:", age);
@@ -870,7 +890,7 @@ Validate SIN/SSN format (9 digits).
 **Example:**
 
 ```typescript
-import { isValidSIN } from "@singlekey/sdk";
+import { isValidSIN } from "./src";
 
 if (isValidSIN("123456789")) {
   console.log("Valid SIN");
@@ -890,7 +910,7 @@ Normalize SIN/SSN to 9 digits.
 **Example:**
 
 ```typescript
-import { normalizeSIN } from "@singlekey/sdk";
+import { normalizeSIN } from "./src";
 
 const normalized = normalizeSIN("123-456-789");
 // Returns: '123456789'
@@ -911,7 +931,7 @@ Validate address format.
 **Example:**
 
 ```typescript
-import { isValidAddress } from "@singlekey/sdk";
+import { isValidAddress } from "./src";
 
 const validation = isValidAddress("123 Main St, Toronto, ON, Canada, M5V 1A1");
 if (validation.valid) {
@@ -936,7 +956,7 @@ Format address components to standard format.
 **Example:**
 
 ```typescript
-import { formatAddress } from "@singlekey/sdk";
+import { formatAddress } from "./src";
 
 const address = formatAddress(
   "123 Main St",
@@ -963,7 +983,7 @@ Validate Canadian postal code format.
 **Example:**
 
 ```typescript
-import { isValidPostalCode } from "@singlekey/sdk";
+import { isValidPostalCode } from "./src";
 
 if (isValidPostalCode("M5V 1A1")) {
   console.log("Valid Canadian postal code");
@@ -983,7 +1003,7 @@ Validate US ZIP code format.
 **Example:**
 
 ```typescript
-import { isValidZipCode } from "@singlekey/sdk";
+import { isValidZipCode } from "./src";
 
 if (isValidZipCode("90210")) {
   console.log("Valid US ZIP code");
@@ -1006,7 +1026,7 @@ Validate credit card expiration date.
 **Example:**
 
 ```typescript
-import { isValidCardExpiration } from "@singlekey/sdk";
+import { isValidCardExpiration } from "./src";
 
 if (isValidCardExpiration(12, 2025)) {
   console.log("Card not expired");
@@ -1016,6 +1036,8 @@ if (isValidCardExpiration(12, 2025)) {
 ---
 
 ### Error Classes
+
+**Official Documentation:** [Status Codes and Errors](https://github.com/singlekeyinc/Screening-Api/tree/main/responses/status-codes-and-errors.md) | [Purchase Errors](https://github.com/singlekeyinc/Screening-Api/tree/main/api-reference/purchase-errors.md) | [Error Codes](https://github.com/singlekeyinc/Screening-Api/tree/main/troubleshooting/error-codes.md) | [FAQ](https://github.com/singlekeyinc/Screening-Api/tree/main/troubleshooting/faq.md)
 
 All SDK errors extend the base `SingleKeyError` class.
 
@@ -1035,7 +1057,7 @@ Thrown for authentication failures (401).
 **Example:**
 
 ```typescript
-import { AuthenticationError } from "@singlekey/sdk";
+import { AuthenticationError } from "./src";
 
 try {
   await client.report.get(token);
@@ -1059,7 +1081,7 @@ Thrown for validation failures (400).
 **Example:**
 
 ```typescript
-import { ValidationError } from "@singlekey/sdk";
+import { ValidationError } from "./src";
 
 try {
   await client.request.create(data);
@@ -1131,6 +1153,8 @@ Thrown when webhook verification fails.
 
 ## Integration Examples
 
+**Official Documentation:** [Form-Based Integration Guide](https://github.com/singlekeyinc/Screening-Api/tree/main/integration-guides/form-based-integration.md) | [Direct API Integration Guide](https://github.com/singlekeyinc/Screening-Api/tree/main/integration-guides/direct-api-integration.md) | [Webhook Integration Guide](https://github.com/singlekeyinc/Screening-Api/tree/main/integration-guides/webhook-integration.md)
+
 ### Form-Based Integration
 
 ```typescript
@@ -1178,7 +1202,7 @@ console.log("Score:", report.singlekey_score);
 
 ```typescript
 import express from "express";
-import { webhookMiddleware } from "@singlekey/sdk";
+import { webhookMiddleware } from "./src";
 
 const app = express();
 
@@ -1236,7 +1260,7 @@ import type {
   ScreeningReportComplete,
   ApplicantInfoDetailed,
   WebhookPayload,
-} from "@singlekey/sdk";
+} from "./src";
 
 // Full type safety
 const data: ScreeningRequestData = {
@@ -1268,5 +1292,5 @@ const client = new SingleKey({
 
 ## Requirements
 
-- Node.js >= 16.0.0
+- Node.js >= 20.0.0
 - TypeScript >= 5.0.0 (for TypeScript projects)
