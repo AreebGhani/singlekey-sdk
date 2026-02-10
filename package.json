@@ -1,0 +1,42 @@
+{
+    "name": "@singlekey/sdk",
+    "version": "1.0.0",
+    "description": "TypeScript SDK for SingleKey Screening API - Tenant screening, credit reports, and background checks",
+    "main": "dist/index.js",
+    "types": "dist/index.d.ts",
+    "private": false,
+    "type": "module",
+    "scripts": {
+        "build": "tsc",
+        "build:watch": "tsc --watch"
+    },
+    "keywords": [
+        "singlekey",
+        "tenant-screening",
+        "credit-check",
+        "background-check",
+        "rental-application",
+        "landlord",
+        "property-management"
+    ],
+    "author": "Areeb Ghani <areebghanidps@gmail.com>",
+    "license": "MIT",
+    "dependencies": {
+        "axios": "^1.6.0"
+    },
+    "devDependencies": {
+        "@types/node": "^20.0.0",
+        "typescript": "^5.0.0"
+    },
+    "engines": {
+        "node": ">=20.0.0"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/AreebGhani/singlekey-sdk.git"
+    },
+    "bugs": {
+        "url": "https://github.com/AreebGhani/singlekey-sdk.git/issues"
+    },
+    "homepage": "https://www.singlekey.com"
+}
